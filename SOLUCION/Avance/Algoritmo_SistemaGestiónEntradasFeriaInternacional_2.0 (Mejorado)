@@ -1,0 +1,125 @@
+Algoritmo_SistemaGestiónEntradasFeriaInternacionalLoja
+1. Inicio 
+2. Funcion Principal
+3.     Definir entradaNor=1,50, entradaCon=7,00, promoc, valor, boletoEscogido como  real [0,n]
+4.     Definir cantidad, opcNum, hora como entero 
+5.     Definir nomCli, fecha como cadena [A-Z, ,a-z]
+6.     Escribir "Ingrese su nombre"
+7.     leer nomCli
+8.     Escribir "Ingrese la opcion de la fecha que desea asistir"
+9.     Escribir "1. Viernes – 30/08" --> Concierto
+10.    Escribir "2. Sábado – 31/08"  --> Concierto
+11.    Escribir "3. Domingo – 1/09"
+12.    Escribir "4. Lunes – 2/09"
+13.    Escribir "5. Martes – 3/09"
+14.    Escribir "6. Miércoles – 4 /09"
+15.    Escribir "7. Jueves – 5/09" --> Concierto
+16.    Escribir "8. Viernes – 6/09" --> Concierto
+17.    Escribir "9. Sábado – 7/09"--> Concierto
+18.    Escribir "10. Domingo – 8/09"
+19.    leer opcNum
+
+20. 	   Segun opcNum Hacer:
+21.	   		1:
+	   			fecha = "Viernes – 30/08" 
+	   			Escribir "En que hora desea ingresar: "
+	   			Leer hora
+22.	   			Si (hora > 4)
+	   				Escribir "Este dia hay concierto a partir de las 5 por lo tanto el valor de su boleto aumenta a $7,00"
+	   				boletoEscogido = entradaCon
+23.	   			Sino
+	   				Escribir "El precio de su boleto es $1,50"
+	   				boletoEscogido = entradaNor
+24.	   			FinSi
+25.	   		2:
+	   		    fecha = "Sábado – 31/08"
+	   			Escribir "En que hora desea ingresar: "
+	   			Leer hora
+26.	   			Si (hora > 4)
+	   				Escribir "Este dia hay concierto a partir de las 5 por lo tanto el valor de su boleto aumenta a $7,00"
+	   				boletoEscogido = entradaCon
+27.	   			Sino
+	   				Escribir "El precio de su boleto es $1,50"
+	   				boletoEscogido = entradaNor
+28.	   			FinSi
+29.	   		3:
+	   		    fecha =  "Domingo – 1/09"
+	   			Escribir "En que hora desea ingresar: "
+	   			Leer hora
+	   			Escribir "El precio de su boleto es $1,50"
+	   			boletoEscogido = entradaNor
+30.	   		4:
+	   		    fecha = "Lunes – 2/09"
+	   			Escribir "En que hora desea ingresar: "
+	   			Leer hora
+	   			Escribir "El precio de su boleto es $1,50"
+	   			boletoEscogido = entradaNor
+31.	   		5:
+	   		    fecha = "Martes – 3/09"
+	   			Escribir "En que hora desea ingresar: "
+	   			Leer hora 
+	   			Escribir "El precio de su boleto es $1,50"
+	   			boletoEscogido = entradaNor
+32.	   		6:
+	   		    fecha = "Miercoles - 4/09"
+	   			Escribir "En que hora desea ingresar: "
+	   			Leer hora
+	   			Escribir "El precio de su boleto es $1,50"
+	   			boletoEscogido = entradaNor
+33.	   		7:
+	   		    fecha = "Juves - 5/09"
+	   			Escribir "En que hora desea ingresar: "
+	   			Leer hora
+34.	   			Si (hora > 4)
+	   				Escribir "Este dia hay concierto a partir de las 5 por lo tanto el valor de su boleto aumenta a $7,00"
+	   				boletoEscogido = entradaCon
+35.	   			Sino
+	   				Escribir "El precio de su boleto es $1,50"
+	   				boletoEscogido = entradaNor
+36.	   			FinSi
+37.	   		8:
+	   			fecha = "Viernes – 6/09"
+	   			Escribir "En que hora desea ingresar: "
+	   			Leer hora
+38.	   			Si (hora > 4)
+	   				Escribir "Este dia hay concierto a partir de las 5pm por lo tanto el valor de su boleto aumenta a $7,00"
+	   				boletoEscogido = entradaCon
+39.	   			Sino
+	   				Escribir "El precio de su boleto es $1,50"
+	   				boletoEscogido = entradaNor
+40.	   			FinSi
+41.	   		9:
+	   		    fecha = "Sabado - 7/09"
+	   			Escribir "En que hora desea ingresar: "
+	   			Leer hora
+42.	   			Si (hora > 4)
+	   				Escribir "Este dia hay concierto a partir de las 5 por lo tanto el valor de su boleto aumenta a $7,00"
+	   				boletoEscogido = entradaCon
+43.	   			Sino
+	   				Escribir "El precio de su boleto es $1,50"
+	   				boletoEscogido = entradaNor
+44.	   			FinSi
+45.	   		10:
+	   		    fecha = "Domingo - 8/09"
+	   			Escribir "En que hora desea ingresar: "
+	   			Leer hora
+	   			Escribir "El precio de su boleto es $1,50"
+	   			boletoEscogido = entradaNor
+
+46.	   		De Otro Modo:
+	   			Escrbir "Opcion incorrecta ingrese nuevamente"
+47.	   FinSegun 	
+
+
+48.		Escribir "Cuantos boletos desea comprar?:"
+49.		Leer cantidad
+
+50.		Escribir"FACTURA FINAL"
+51.		Escribir nomCli, " ha comprado boletos para el dia ", fecha, " en el horario a partir de las ", hora , " ;una cantidad de ", cantidad, " boletos, su valor a pagar es: $",valorTotal(cantidad, boletoEscogido)
+52.	FinFuncionPrincipal
+
+1. Funcion valorTotal(cantidad i(1,n), boletoEscogido d(0,n)):d
+2.	  Definir total Como Real [1,n]
+3.	  total = cantidad * boletoEscogido
+4.	  Devolver total
+5. FinFuncion
