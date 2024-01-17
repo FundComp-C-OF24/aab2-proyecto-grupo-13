@@ -1,0 +1,31 @@
+Algoritmo_SistemaGestiónEntradasFeriaInternacionalLoja
+1. Inicio 
+2. Funcion Principal
+3.     Definir entradaNor, entradaCon, prom, total, valor como  real
+4.     Definir cantidad, opcNum, hora=5 como entero 
+5.     Definir nomCli, fecha como cadena [A-Z, ,a-z]
+6.     Escribir "Ingrese su nombre"
+7.     leer nomCli
+8.     Escribir "Ingrese la opcion de la fecha que desea asistir"
+9.     Escribir "1. Viernes – 30/08"
+10.    Escribir "2. Sábado – 31/08"  
+11.    Escribir "3. Domingo – 1/09"
+12.    Escribir "4. Lunes – 2/09"
+13.    Escribir "5. Martes – 3/09"
+14.    Escribir "6. Miércoles – 4 /09"
+15.    Escribir "7. Jueves – 5/09"
+16.    Escribir "8. Viernes – 6/09"
+17.    Escribir "9. Sábado – 7/09"
+18.    Escribir "10. Domingo – 8/09"
+19.    leer opcNum
+
+20.    Si (opcNum == 1)
+21.       Escribir "Ingrese la hora de asistencia"
+22.          Si (hora == 5)
+23.             Escribir "Debe pagar entrada al concierto"
+24.          SiNo
+25.             Escribir "Debe pagar entrada normal"
+26.          FinSi
+27.       Escribir "Cantidad de entradas"
+28.       leer cantidad 
+ 
