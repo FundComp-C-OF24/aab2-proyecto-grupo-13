@@ -1,0 +1,236 @@
+Algoritmo_SistemaFeria
+Inicio
+Declarar variables
+	Definir entradaNor=1.5, entradaCon=7.00, promc, valor, boletoEscogido=0, TotalIva como Real ;
+	Definir cantidad, cantidadAdultos, cantidadPreferencial, hora, dia, clienteActual = 0, maxClientes = 10, fecha = 0, contador = 0 como Entero;
+	Definir fechaboll = falso como logico;
+	Definir nombreCli, opcion,  como Cadena;
+    Dimension clientes[maxClientes][8]
+	Dimension datos[10][6]
+
+	Escribir "============================== BIENVENIDOS A FERIA DE LOJA ===================================="
+	Escribir "CRONOGRAMA DE FUNCIONES "
+    Escribir "+--------------------+---------------+---------------+--------------------+----------+"
+    Escribir "Artista", "Dia", "Fecha", "Entrada", "Precio"
+    Escribir "+--------------------+---------------+---------------+--------------------+----------+"
+    Para (j = 0; j < 10; j++) 
+        Escribir conciertos[j][0], conciertos[j][1], conciertos[j][2], conciertos[j][3], conciertos[j][4]
+    Fin Para
+    Escribir "+--------------------+---------------+---------------+--------------------+----------+"
+
+    Hacer 
+        Escribir "Nombre y apellido de la persona que desea hacer la factura: "
+        Leer nombCli
+        Escribir "Estimad@ " + nombCli
+        Escribir " --------< LAS FECHAS DISPONIBLES SON >--------"
+        Escribir "[1] Viernes -> 30/08"
+        Escribir "[2] Sabado -> 31/08"
+        Escribir "[3] Domingo -> 1/09"
+        Escribir "[4] Lunes -> 2/09"
+        Escribir "[5] Martes -> 3/09"
+        Escribir "[6] Miercoles -> 4/09"
+        Escribir "[7] Jueves -> 5/09"
+        Escribir "[8] Viernes -> 6/09"
+        Escribir "[9] Sabado -> 7/09"
+        Escribir "[10] Domingo -> 8/09"
+        True 
+        Mientras(Fecha == falso)
+            Escribir "----------------------------------------------------"
+            Escribir "Ingrese el numero correspondiente a la fecha deseada: "
+            Leer fecha
+            Si (fecha > 0 Y fecha < 11)
+               True 
+            Si no 
+            	Escribir "Lo sentimos este día no hay feria"
+            FinSi
+        
+        Escribir "Ingrese la hora que desea asistir: "
+        Leer hora
+
+        boletoEscogido = boletosEscogidos(hora, fecha, boletoEscogido, entradaConc, entradaNor)
+        Escribir "Cuantos boletos desea comprar: "
+        Leer cantidad
+        Escribir "Cuantos boletos preferenciales desea comprar: "
+        Leer cantidadPreferencial
+
+        cantidad = cantidadAdulto + cantidadPreferencial
+
+        Total = totalPagar(cantidadAdultos, boletoEscogido ,1 )
+        Total += totalPagar(cantidadPreferencial, boletoEscogido ,2 )
+
+
+            clientes[clienteActual][0] = nombCli;
+            clientes[clienteActual][1] = convertir A Cadena(fecha)
+            clientes[clienteActual][2] = convertir A Entero (hora)
+            clientes[clienteActual][3] = convertir A Real(boletoEscogido)
+            clientes[clienteActual][4] = convertir A Entero(cantidad)
+            clientes[clienteActual][5] = convertir A Cadena(cantidadAdultos);
+            clientes[clienteActual][6] = convertir A Cadena(cantidadPreferencial);
+            clientes[clienteActual][7] = convertir A Real(Total)
+            mostrarFactura(clientes[clienteActual])
+
+            clienteActual + 1
+
+            datos[0][1] += cantidad                    
+            Si (boletoEscogido == 1.5)
+                datos[0][2] += cantidad                
+            Si no (boletoEscogido == 7.0)
+                datos[0][3] += cantidad                
+            Fin Si                    
+            datos[fecha-1][4] += Total                 
+
+            Escribir "Desea ingresar informacion de un cliente nuevo? (Si/No): "
+            Leer opcion
+        Mientras (opcion == si)
+        Fin Mientras
+Fin funcion principal
+
+Funcion obtenerFecha(f como entero){
+    Segun (f) Hacer
+        caso 1: devolver "Viernes -> 30/08"
+        caso 2: devolver "Sabado -> 31/08"
+        caso 3: devolver "Domingo -> 1/09"
+        caso 4: devolver "Lunes -> 2/09"
+        caso 5: devover "Martes -> 3/09"
+        caso 6: devolver "Miercoles -> 4/09"
+        caso 7: devolver "Jueves -> 5/09"
+        caso 8: devover "Viernes -> 6/09"
+        caso 9: devover "Sabado -> 7/09"
+        caso 10: devolver "Domingo -> 8/09"
+        Por defecto: decolver "No especificada"
+    Fin segun
+Fin funcion
+
+Funcion Estadisticas(como Real[][] datos)
+    diaMayorIngresos = diaMayorIngresos(datos) como Real
+    diaMasEntradasVendidas = diaMasEntradasVendidas(datos) como Real
+    totalPersonasAsistidas = totalPersonasAsistidas(datos) como Real
+
+    Escribir ""
+    Escribir "RESULTADOS ESTADISTICOS"
+    Escribir "-------------------------------------------------------"
+    Escribir "El día con mayor ingresos obtenidos es el : "+ obtenerFecha(diaMayorIngresos)
+    Escribir "El día con más entradas vendidas es el : "+ obtenerFecha(diaMasEntradasVendidas)
+    Escribir "El número total de asistidos es : "+ totalPersonasAsistidas+ " personas"
+Fin funcion
+
+Funcion boletosEscogidos(hora, fecha como Entero; boletoEscogido, entradaConc, entradaNor como Real)
+    Segun opcion Hacer 
+        Caso 1:
+            boletoEscogido = entradaConc
+            Si (hora > 16) 
+                Escribir "Su boleto cuesta $ 7,00"
+            Si no 
+                Escribir("Su boleto cuesta $ 1,50"
+                    boletoEscogido -= 5.50;
+        Caso 2:
+            boletoEscogido = entradaConc
+            Si (hora > 16) 
+                Escribir"Su boleto cuesta $ 7,00"
+            Si no 
+                Escribir "Su boleto cuesta $ 1,50"
+                boletoEscogido -= 5.50
+        Caso 3:
+            boletoEscogido = entradaNor
+        Caso 4:
+            boletoEscogido = entradaNor
+        Caso 5:
+            boletoEscogido = entradaNor
+        Caso 6:
+            boletoEscogido = entradaNor
+        Caso 7:
+            boletoEscogido = entradaConc
+            Si (hora > 16) 
+                Escribir "Su boleto cuesta $ 7,00"
+            Si no 
+                Escribir "Su boleto cuesta $ 1,50"
+                    boletoEscogido -= 5.50
+                Romper
+        Caso 8:
+            boletoEscogido = entradaConc
+            Si (hora > 16) 
+                Escribir "Su boleto cuesta $ 7,00"
+            Si no 
+                Escribir "Su boleto cuesta $ 1,50"
+                boletoEscogido -= 5.50
+                Romper
+        Caso 9:
+            boletoEscogido = entradaConc
+            Si (hora > 16) 
+                Escribir "Su boleto cuesta $ 7,00"
+            Si no 
+                Escribir "Su boleto cuesta $ 1,50"
+                boletoEscogido -= 5.50
+                Romper
+        Caso 10:
+            boletoEscogido = entradaNor
+            Romper
+
+        Por defecto
+            Escribir "Esos días no hay feria"
+        Fin segun
+        Devolver boletoEscogido
+Fin funcion
+
+Funcion totalPagar(cantidad, tipo como Entero, boletoEscogido como Real) 
+    Definir Total = 0 como Real
+    Total = cantidad * boletoEscogido
+    Si (tipo == 1)
+        total = cantidad * boletoEscogido
+    Si no (tipo == 2)
+        total = cantidad * boletoEscogido/2                
+    Fin Si
+
+    Si(boletoEscogido == 7 Y cantidad > 3)
+        total = cantidad * 5;
+        Escribir "Por las sus boletos cuestan $5.00 compra de mas de 3 entradas sus boletos cuestan $5.00"
+    Fin si
+        Devolver Total
+Fin funcion
+
+Funcion mostrarFactura(cliente[] como Cadena) 
+    totalSinIva = Double.parseDouble(cliente[7]) 
+    iva = totalSinIva * 0.12 como Real
+    totalConIva = totalSinIva + iva como Real
+
+    Escribir "~~~~~~~~~~~~~~~~~~~~~~~~~~ FACTURA ~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+    Escribir "Nombre: " + cliente[0]
+    Escribir "Fecha: " + cliente[1]
+    Escribir "Hora: " + (cliente[2]+":00"
+    Escribir "Precio Boleto: $" + cliente[3]
+    Escribir "Cantidad Boletos: " + cliente[4]
+    Escribir "Cantidad Boletos Normales: " + cliente[5]
+    Escribir "Cantidad Boletos Preferenciales: " + cliente[6]
+    Escribir "Total sin IVA: $" + totalSinIva
+    Escribir "Total con IVA: $" + totalConIva);
+Fin funcion
+
+Funcion diaMayorIngresos(datos[][] como Real)
+    maxValor=0, double dia = 0 como Real
+    Para(i=0 ; i<10 ; i++)
+        Si(datos[i][4] > maxValue)
+            maxValor = datos[i][4]
+            dia = datos[i][0]
+        Fin Si
+    Fin Para
+        Devolver dia
+Fin funcion
+
+Funcion diaMasEntradasVendidas(datos[][] como Real)
+    maxValOR=0, dia = 0 como Real
+    Para(i=0 ; i<10 ; i++)
+        Si(datos[i][1] > maxValue)
+            maxValue = datos[i][1]
+            dia = datos[i][0]
+        Fin Si
+    Fin Para
+        Devolver dia
+Fin funcion
+
+Funcion totalPersonasAsistidas(datos[][] como Real)
+    suma=0 como Real
+    Para(i=0 ; i<10 ; i++)
+        suma += datos[i][1]
+    Fin Para
+        Devolver suma
+FinFuncion
